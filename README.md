@@ -1,28 +1,26 @@
 # hello-goapp
 
-There are two apps in the project:
+There are two services in the project:
 
 * hellofoo
 * hellobar
 
-To run hellofoo on dev server
+hellofoo service has different directory structure for hybrid app support from hellobar which is simple and has only app.go
+
+To run hellofoo on dev server:
 
     goapp serve hellofoo/app
 
 
-To run hellobar on dev server
+To run hellobar on dev server with different port:
 
-    goapp serve hellofoo/app
-
-
-if you want to run both apps on dev servers with different ports
-
-    goapp serve -port=9090 -admin_port=9091 hellobar/app
+    goapp serve -port=9090 -admin_port=9091 hellobar
     
+
 ### Trace test
 
 Let's see the trace information on google cloud console.
 Call the following url via 'GET' method, so that the call from hellofoo fetchs the hellobar's url.
 Then, the information should be shown on the trace console.
 
-    http://localhost:8080/trace-from-foo-to-bar
+    http://localhost:8080/trace-foo
