@@ -7,25 +7,32 @@ import (
     "google.golang.org/appengine/urlfetch"
     "io/ioutil"
     "io"
+    "golang.org/x/net/context"
 )
 
-func Hello(w http.ResponseWriter, req *http.Request) {
+func HelloFoo(w http.ResponseWriter, req *http.Request) {
     w.Write([]byte("Hello Foo!"))
 }
 
 func TraceFoo(w http.ResponseWriter, req *http.Request) {
     c := appengine.NewContext(req)
+    DoTraceFoo(c, w, req)
+}
+
+func DoTraceFoo(c context.Context, w http.ResponseWriter, req *http.Request) {
 
     log.Infof(c, "Called trace-foo")
 
     client := urlfetch.Client(c)
 
     //Gets 'hellobar' service name
-    hellobar, err := appengine.ModuleHostname(c, "hellobar", "", "")
-
+    hellobar, _ := appengine.ModuleHostname(c, "hellobar", "", "")
+    if hellobar == "" {
+        hellobar = "localhost:9090"
+    }
     log.Infof(c, "hellobar hostname: %s", hellobar)
 
-    resp, err := client.Get("https://" + hellobar + "/trace-bar")
+    resp, err := client.Get("http://" + hellobar + "/trace-bar")
     if err != nil {
         http.Error(w,
             http.StatusText(http.StatusInternalServerError),

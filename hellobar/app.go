@@ -8,11 +8,11 @@ import (
 )
 
 func init() {
-    http.HandleFunc("/hello", hello)
+    http.HandleFunc("/hello-bar", helloBar)
     http.HandleFunc("/trace-bar", traceBar)
 }
 
-func hello(w http.ResponseWriter, req *http.Request) {
+func helloBar(w http.ResponseWriter, req *http.Request) {
     w.Write([]byte("Hello Bar!"))
 }
 
