@@ -3,12 +3,11 @@
 package main
 
 import (
-    "net/http"
-    "log"
+	"log"
+	"net/http"
 )
 
 func main() {
-    log.Println("Called main()")
-    http.ListenAndServe(":8080", nil)
+	log.Println("Called main()")
+	http.ListenAndServe(":8080", nil)
 }
-
