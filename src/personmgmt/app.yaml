@@ -1,5 +1,5 @@
 runtime: go
-service: hellofoo
+service: person-mgmt
 api_version: go1
 
 handlers:

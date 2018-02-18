@@ -9,6 +9,12 @@
 			"path": "/proto"
 		},
 		{
+			"importpath": "github.com/gorilla/mux",
+			"repository": "https://github.com/gorilla/mux",
+			"revision": "c0091a029979286890368b4c7b301261e448e242",
+			"branch": "master"
+		},
+		{
 			"importpath": "github.com/mjibson/appstats",
 			"repository": "https://github.com/mjibson/appstats",
 			"revision": "0542d5f0e87ea3a8fa4174322b9532f5d04f9fa8",
